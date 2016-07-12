@@ -1,0 +1,21 @@
+<div class="mainCont">
+    <div class="header">
+        <h1>Math World</h1>
+        <h3>Math practice</h3>
+        <ul class="navBar">
+            <li class="navList"><a ui-sref="login">Log Out</a></li>
+            <li class="navList"><a ui-sref="admin">Admin</a></li>
+            <li class="navList"><a ui-sref="scores">Scores</a></li>
+            <li class="navList"><a ui-sref="home">Home</a></li>
+        </ul>
+    </div>
+    <button type="button" ng-click="getUsers()" name="Users">User List</button>
+    <div class="userList" ng-repeat="user in data">
+        <ul>
+            <li>First Name: {{user.firstname}} Last Name: {{user.lastname}}</li>
+            <li>User Name: {{user.username}}</li>
+        </ul>
+    </div>
+</div>
+
+Eat a banana

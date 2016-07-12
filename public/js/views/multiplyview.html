@@ -1,0 +1,33 @@
+<div class="mainCont">
+    <div class="header">
+        <h1>Math World</h1>
+        <h3>Math practice</h3>
+        <ul class="navBar">
+            <li class="navList"><a ui-sref="login">Log Out</a></li>
+            <li class="navList"><a ui-sref="admin">Admin</a></li>
+            <li class="navList"><a ui-sref="scores">Scores</a></li>
+            <li class="navList"><a ui-sref="home">Home</a></li>
+        </ul>
+    </div>
+
+</div>
+<form ng-hide="started()">
+    <h4>Choose Your Level</h4>
+    <select ng-model="levl" class="" ng-options="lvl for lvl in level">
+    </select>
+    <br/>
+    <br/>
+
+    <section>
+        <h4>Pick a Number to Multiply By</h4>
+        <select ng-model="numB" ng-options="opt for opt in options">
+        </select>
+        <br/>
+        <br/>
+    </section>
+    <button id="rndm" ng-click="getNumEqutn()">Click to Begin</button>
+</form>
+<div class="bigEq" ng-show="shw()">
+    <mltply-dir ng-hide=last()></mltply-dir>
+    <scores-dir ng-show="last()"></scores-dir>
+    </div>

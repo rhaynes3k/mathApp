@@ -1,0 +1,23 @@
+{
+  "name": "math-app",
+  "version": "1.0.0",
+  "description": "Math App is web application that helps anyone sharpen their basic math skills. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "math",
+    "app"
+  ],
+  "author": "Rommel Haynes",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cors": "^2.7.1",
+    "express": "^4.14.0",
+    "express-session": "^1.14.0",
+    "mongoose": "^4.5.3",
+    "path": "^0.12.7"
+  }
+}
