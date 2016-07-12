@@ -4,12 +4,19 @@ const mongoose = require('mongoose');
 module.exports = {
 
     userLogin(req, res, next) {
-        if (!req.session.user) {
+        if (!req.body.user) {
             return res.status(401).json(err);
         }
         return res.status(200).json(result);
     },
+    login(req, res, next) {
+        console.log(req.body);
+        User.find({username: req.body.username, password: req.body.password}).exec((err, result) =>{
+            console.log("result line 21", result);
 
+             return res.status(200).send(result);
+        });
+    },
     createUser(req, res, next) {
         new User(req.body).save((err, result) =>{
             if (err) {

@@ -1,5 +1,18 @@
 angular.module("mathApp")
-    .controller('adminCtrl', function($scope, mainService) {
+    .controller('adminCtrl', function($scope, $state, $cookies, mainService) {
+
+
+        $scope.user = $cookies.getObject("currentUser");
+
+        if ($scope.user[0].isAdmin === false) {
+
+            $state.go('home');
+            sweetAlert("Oops...", "You're not an admin!", "error");
+        }
+
+        console.log("currentuser", $scope.user);
+
+
 
         $scope.getUsers = function() {   //admin
             // console.log();

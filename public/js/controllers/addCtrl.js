@@ -1,5 +1,5 @@
 angular.module("mathApp")
-    .controller('addCtrl', function($scope, mainService) {
+    .controller('addCtrl', function($scope, $cookies, mainService) {
 
         var numT, numB;
         var addAns = [];

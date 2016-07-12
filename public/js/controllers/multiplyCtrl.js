@@ -1,5 +1,5 @@
 angular.module("mathApp")
-    .controller('multiplyCtrl', function($scope, mainService) {
+    .controller('multiplyCtrl', function($scope, $cookies, mainService) {
 
         var numT, numB;
         $scope.cntr = 0;

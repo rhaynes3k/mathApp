@@ -1,5 +1,5 @@
 angular.module("mathApp")
-    .controller('subtractCtrl', function($scope, mainService) {
+    .controller('subtractCtrl', function($scope, $cookies, mainService) {
 
         // $scope.counter = function() {
         //     for (var i = 0; i < 25; i++) {

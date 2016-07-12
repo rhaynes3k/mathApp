@@ -1,5 +1,5 @@
 angular.module("mathApp")
-    .controller('userCtrl', function($scope, mainService) {
+    .controller('userCtrl', function($scope, $cookies, mainService) {
 
 
 

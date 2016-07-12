@@ -1,5 +1,13 @@
 const mongoose = require('mongoose');
 let ScoresSchema = mongoose.Schema({
+
+
+
+    eqOpr: {
+        type: String,
+        required: true
+    },
+
     numRight: {
         type: Number,
         required: true

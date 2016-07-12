@@ -1,4 +1,4 @@
-angular.module("mathApp", ['ui.router'])
+angular.module("mathApp", ['ui.router', 'ngCookies'])
 
 .config(function($urlRouterProvider, $stateProvider) {
 

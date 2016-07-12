@@ -17,6 +17,11 @@ let UserSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    isAdmin: {
+        type: Boolean,
+        required: true,
+        default: false
+    }
     // Scores: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Scores' }]
 
 });

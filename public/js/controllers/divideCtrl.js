@@ -1,5 +1,5 @@
 angular.module("mathApp")
-    .controller('divideCtrl', function($scope, mainService) {
+    .controller('divideCtrl', function($scope, $cookies, mainService) {
 
         var numT, numB;
         $scope.cntr = 0;

@@ -1,5 +1,5 @@
 angular.module("mathApp")
-.controller("mainCtrl", function($scope, mainService) {
+.controller("mainCtrl", function($scope, $state, $cookies, mainService) {
 
     $scope.createUser = function(userInfo) {    //admin or user
         // console.log(userInfo);
@@ -26,12 +26,20 @@ angular.module("mathApp")
         });
     };
 
-    $scope.login = function(userInfo) {     //admin or user
-        console.log(userInfo);
-        mainService.login(userInfo)
+    $scope.login = function() {     //admin or user
+        // console.log($scope.loginUser);
+        mainService.login($scope.loginUser)
         .then((response) => {
             console.log(response);
-            return response;
+            if(response.data.length === 0) {
+                alert("Login failed");
+            }
+            else{
+                console.log(response);
+                var user = response.data;
+                $cookies.putObject("currentUser", user);
+                $state.go("home");
+            }
         });
     };
 

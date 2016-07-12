@@ -33,6 +33,19 @@ angular.module("mathApp")
             return $http.delete("/api/user/userInfo", _id);
         };
 
+        this.login = function(userObj) {
+            return $http({
+                method: 'POST',
+                url: '/api/user/login',
+                data: {username: userObj.username, password: userObj.password}
+            })
+            .then(function (res){
+                console.log("hello");
+                return res;
+
+            });
+        };
+
 //end of API calls...
 
 
