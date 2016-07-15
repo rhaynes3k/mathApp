@@ -1,6 +1,8 @@
 angular.module("mathApp")
     .controller('homeCtrl', function($scope, $state, $cookies, mainService) {
 
+        $scope.currentDate = new Date();
+
         $scope.user = $cookies.getObject("currentUser");
 
         if (!$scope.user) {

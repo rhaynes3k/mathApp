@@ -1,10 +1,13 @@
 <div class="mainCont">
     <div class="header">
-        <h1>Math World</h1>
+        <h1>MATH-A-PALOOZA!</h1>
         <h3>Math practice</h3>
+        <div class="" ng-model="loginUser.currentDate">
+            Today's Date: {{currentDate | date: "fullDate"}}
+        </div>
         <div class="loginBox">
             <input type="text" ng-model="loginUser.username" name="username">Username
-            <input type="text" ng-model="loginUser.password" name="password">Password
+            <input type="password" ng-model="loginUser.password" name="password">Password
             <button ng-click="login()">Login</button>
             <a ui-sref="createUser">Create User</a>
         </div>

@@ -1,6 +1,7 @@
 angular.module("mathApp")
     .controller('adminCtrl', function($scope, $state, $cookies, mainService) {
 
+        $scope.currentDate = new Date();
 
         $scope.user = $cookies.getObject("currentUser");
 
@@ -24,9 +25,9 @@ angular.module("mathApp")
             });
         };
 
-        $scope.deleteUsers = function() {   //admin
+        $scope.getScores = function() {   //admin
             // console.log();
-            mainService.deleteUsers()
+            mainService.getScores()
             .then((response) => {
                 // console.log(response);
                 $scope.data = response.data;

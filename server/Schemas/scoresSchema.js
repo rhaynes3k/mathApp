@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
 let ScoresSchema = mongoose.Schema({
 
-
-
-    eqOpr: {
+    submitted : {type : Date, default: Date.now},
+    quizType: {
         type: String,
         required: true
     },
@@ -15,9 +14,21 @@ let ScoresSchema = mongoose.Schema({
     outOf: {
         type: Number,
         required: true
-    }
-    // User: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
+    },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 
 
 });
 module.exports = mongoose.model('Scores', ScoresSchema);
+
+
+// let dateSchema = mongoose.Schema({
+//     lastLogin: {
+//         type: Date,
+//         required: true
+//     },
+//     currentLogin: {
+//         type: Date,
+//         required: true
+//     }
+// });

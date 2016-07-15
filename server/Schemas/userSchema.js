@@ -21,8 +21,18 @@ let UserSchema = mongoose.Schema({
         type: Boolean,
         required: true,
         default: false
-    }
-    // Scores: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Scores' }]
+    },
+    currentDate: {
+        type: Date,
+        require: true
+    },
+    previousDate: {
+        type: Date
+    },
+    scores: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Scores'
+    }]
 
 });
 module.exports = mongoose.model('User', UserSchema);

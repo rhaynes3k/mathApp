@@ -27,7 +27,10 @@ module.exports = {
         });
     },
     getUsers(req, res, next) {
-        User.find(function(err, result){
+        User.find({})
+        .populate('scores')
+        .exec(function(err, result){
+
             if (err) {
                 return res.status(500).json(err);
             }
@@ -36,7 +39,10 @@ module.exports = {
     },
 
     getUsersById(req, res, next) {
-        User.find({}, function(err, user){
+        console.log("userId", req.body);
+        User.findById({userId: _id})
+        // .populate('Scores')
+        .exec(function(err, user){
             if (err) {
                 return res.status(500).json(err);
             }
@@ -44,18 +50,45 @@ module.exports = {
             });
     },
 
+    getScores(req, res, next) {
+        Scores.find({})
+        .populate('user')
+        .exec(
+            function(err, result) {
+            if (err) {
+                return res.status(500).json(err);
+            }
+                return res.status(200).json(result);
+            });
+    },
+
+    getScoresById(req, res, next) {
+        console.log("line 57", req.params.id);
+        Scores.find({"user": req.params.id})
+        .populate('user')
+        .exec((err, result) =>{
+            if (err) {
+                return res.status(500).json(err);
+            }
+                return res.status(200).json(result);
+            });
+
+    },
+
     saveScores(req, res, next) {
         new Scores(req.body).save((err, result) => {
             if (err) {
             return res.status(500).json(err);
         }
-            // User.Scores.push(result);
+            // User.scores.find({}).push(result._id);
+            console.log("Line 79", result._id);
             return res.status(200).json(result);
         });
     },
 
     updateUser(req, res, next) {
         if (!req.params.id) {
+            console.log(req.params.id);
             return res.status(400).send('id query needed');
         }
         var query = {

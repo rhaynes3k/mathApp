@@ -1,5 +1,9 @@
 angular.module("mathApp")
-    .controller('divideCtrl', function($scope, $cookies, mainService) {
+    .controller('divideCtrl', function($scope, $cookies, $state, mainService) {
+
+        $scope.currentDate = new Date();
+
+        $scope.user = $cookies.getObject("currentUser");
 
         var numT, numB;
         $scope.cntr = 0;
@@ -72,11 +76,12 @@ angular.module("mathApp")
         };
 
         $scope.saveScores = function() {          //user
-            console.log($scope.rgt, $scope.cntr);
-            mainService.saveScores($scope.rgt, $scope.cntr)
+            console.log($scope.opr, $scope.rgt, $scope.cntr, $scope.user[0]._id);
+            mainService.saveScores($scope.opr, $scope.rgt, $scope.cntr, $scope.user[0]._id)
                 .then((response) => {
                     console.log(response);
-                    return response.data;
+                    $state.go("home");
+
                 });
         };
 

@@ -1,10 +1,10 @@
 angular.module("mathApp")
-    .controller('subtractCtrl', function($scope, $cookies, mainService) {
+    .controller('subtractCtrl', function($scope, $cookies, $state, mainService) {
 
-        // $scope.counter = function() {
-        //     for (var i = 0; i < 25; i++) {
-        //     }
-        // };
+        $scope.currentDate = new Date();
+
+        $scope.user = $cookies.getObject("currentUser");
+
         var numT, numB;
         $scope.cntr = 0;
         $scope.rgt = 0;
@@ -79,26 +79,14 @@ angular.module("mathApp")
         };
 
         $scope.saveScores = function() {          //user
-            console.log($scope.rgt, $scope.cntr);
-            mainService.saveScores($scope.rgt, $scope.cntr)
+            console.log($scope.opr, $scope.rgt, $scope.cntr, $scope.user[0]._id);
+            mainService.saveScores($scope.opr, $scope.rgt, $scope.cntr, $scope.user[0]._id)
                 .then((response) => {
                     console.log(response);
-                    return response.data;
+                    $state.go("home");
+
                 });
         };
-
-
-
-        // $scope.isTru = function() {
-        //     if ($scope.corrAns === "Correct!") {
-        //         $scope.ans = "";
-        //     }
-        // };
-
-        $scope.createTbl = function() {
-            mainService.createTbl();
-        };
-
 
 
 

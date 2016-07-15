@@ -1,7 +1,10 @@
 <div class="mainCont">
     <div class="header">
-        <h1>Math World</h1>
+        <h1>MATH-A-PALOOZA!</h1>
         <h3>Math practice</h3>
+        <div class="">
+            Today's Date: {{currentDate | date: "fullDate"}}
+        </div>
         <ul class="navBar">
             <li class="navList"><a ui-sref="login">Log Out</a></li>
             <li class="navList"><a ui-sref="admin">Admin</a></li>
@@ -12,8 +15,13 @@
     <button type="button" ng-click="getUsers()" name="Users">User List</button>
     <div class="userList" ng-repeat="user in data">
         <ul>
-            <li>First Name: {{user.firstname}} Last Name: {{user.lastname}}</li>
-            <li>User Name: {{user.username}}</li>
+            <li><span>Name:</span> {{user.firstname}} {{user.lastname}}</li>
+            <li><span>User Name:</span> {{user.username}}</li>
+            <div ng-repeat="scores in user.scores">
+                <li><span>Quiz Type:</span> {{scores.quizType}}</li>
+                <li><span>Date Submitted:</span> {{scores.submitted | date: "short"}}</li>
+                <li><span>Scores:</span> {{scores.numRight}}/{{scores.outOf}}</li></div>
+
         </ul>
     </div>
 </div>

@@ -1,5 +1,9 @@
 angular.module("mathApp")
-    .controller('addCtrl', function($scope, $cookies, mainService) {
+    .controller('addCtrl', function($scope, $cookies, $state, mainService) {
+
+        $scope.currentDate = new Date();
+
+        $scope.user = $cookies.getObject("currentUser");
 
         var numT, numB;
         var addAns = [];
@@ -8,12 +12,14 @@ angular.module("mathApp")
         $scope.wrg = 0;
 
 
-        $scope.last = function() {
+$scope.last = function() {
             if ($scope.cntr >= 2) {
                 $scope.prcnt = Math.round((($scope.rgt / $scope.cntr) * 100) * 100) / 100;
+                // $scope.saveScores();
                 return true;
+
             }
-        };
+};
         $scope.level = ["Beginner", "Intermediate", "Genius"];
 
         $scope.yea = function() {
@@ -77,12 +83,24 @@ angular.module("mathApp")
         };
 
 
+        // $scope.scores = function() {
+        //     console.log($cookies.getObject("currentUser"));
+        //     console.log($scope.user[0]._id);
+        //     mainService.getScoresById($scope.user[0]._id)
+        //     .then((response) => {
+        //         $scope.data = response.data;
+        //         console.log(response.data[0].quizType);
+        //         // $state.go("scores");
+        //     });
+        // };
+
         $scope.saveScores = function() {          //user
-            console.log($scope.rgt, $scope.cntr);
-            mainService.saveScores($scope.rgt, $scope.cntr)
+            console.log($scope.opr, $scope.rgt, $scope.cntr, $scope.user[0]._id);
+            mainService.saveScores($scope.opr, $scope.rgt, $scope.cntr, $scope.user[0]._id)
                 .then((response) => {
                     console.log(response);
-                    return response.data;
+                    $state.go("home");
+
                 });
         };
 

@@ -10,14 +10,18 @@ angular.module("mathApp")
             return $http.get("/api/user/userInfo");
         };
 
-        this.getUserById = function() {     //admin or user
-            return $http.get("/api/user/userInfo", _id);
+        this.getUserById = function(id) {     //admin or user
+            console.log(id);
+            return $http.get("/api/user/userInfo", {userId: id});
         };
 
-        this.saveScores = function(scr, outOf) {  //user
+        this.saveScores = function(op, scr, outOf, userId) {  //user
+            console.log(op, scr, outOf, userId);
             return $http.post("/api/user/scores", {
+                quizType: op,
                 numRight: scr,
-                outOf: outOf
+                outOf: outOf,
+                user: userId
             });
         };
 
@@ -25,19 +29,21 @@ angular.module("mathApp")
             return $http.get("/api/user/scores");
         };
 
-        this.getScoresById = function() {   //admin or user
-            return $http.get("/api/user/scores", _id);
+        this.getScoresById = function(id) {   //admin or user
+            console.log(id);
+            return $http.get("/api/user/scoresById/"+ id);
         };
 
         this.updateUsers = function() {    //admin
             return $http.delete("/api/user/userInfo", _id);
         };
 
-        this.login = function(userObj) {
+        this.login = function(userObj, date) {
+            console.log(userObj, date);
             return $http({
                 method: 'POST',
                 url: '/api/user/login',
-                data: {username: userObj.username, password: userObj.password}
+                data: {username: userObj.username, password: userObj.password, currentDate: userObj.date}
             })
             .then(function (res){
                 console.log("hello");
@@ -95,17 +101,28 @@ angular.module("mathApp")
             if (num == sum) {
                 // console.log(num);
                 // console.log(sum);
-                sweetAlert("CORRECT!!! Good job!", "You clicked the button!", "success");
+                sweetAlert({
+                    title: "Correct!!!",
+                    timer: 1000,
+                    showConfirmButton: false
+                });
                 return "Correct!";
             } else {
                 if (num.match(/[a-z]/i)) {
-                    sweetAlert("Oops...", "Letters detected in answer!", "error");
+                    sweetAlert({
+                        title: "Oops..., Letters detected in answer!",
+                        timer: 1000,
+                        showConfirmButton: false
+                    });
                 }
-                sweetAlert("Uh-Oh...Wrong Answer...");
+                sweetAlert({
+                    title: "Uh-Oh...Wrong Answer...",
+                    timer: 1000,
+                    showConfirmButton: false
+                });
                 return "Uh-Oh...Wrong Answer...";
             }
         };
-
 
 
 

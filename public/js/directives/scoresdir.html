@@ -1,4 +1,8 @@
-<div class="scores">Your score for this lesson is {{rgt}} out of 2!!
-{{prcnt}}%
-GOOD JOB!!!!
+<div class="balloon-pic" ng-show="last()">
+    <img src="http://www.animatedimages.org/data/media/563/animated-balloon-image-0058.gif" alt="" />
 </div>
+    <div class="scores">Your score for this lesson is {{rgt}} out of 2!!
+    {{prcnt}}%
+    GOOD JOB!!!!
+    <button type="button" ng-click="saveScores()" name="button">Finish Quiz</button>
+    </div>

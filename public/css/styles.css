@@ -1,5 +1,5 @@
 * {
-    background-color: lightblue;
+    background-color: rgb(25, 194, 238);
 }
 
 .header {
@@ -14,7 +14,7 @@
     background-color: white;
     width: 100%;
     height: 22%;
-    font-size: 160px;
+    font-size: 130px;
     font-family: Sans-Serif;
     border: none;
 
@@ -60,6 +60,7 @@ table.prob {
     border-bottom: solid;
     margin: auto;
     background-color: white;
+
 }
 td {
     background-color: white;
@@ -67,7 +68,7 @@ td {
 }
 
 .bigEq {
-    width: 30%;
+    width: 44%;
     height: 600px;
     text-align: center;
     background-color: white;
@@ -75,23 +76,24 @@ td {
     margin-bottom: 0px;
     display: inline-block;
     margin-left: 35%;
-    font-size: 80%;
+    font-size: 70%;
     /*position: relative;*/
 }
-.kpscr {
+/*.kpscr {
     font-size: 20px;
     background-color: white;
-}
-.navBar, .views {
+}*/
+.navBar, .views, li {
     /*display: inline;*/
     list-style-type: none;
+    margin-top: .6%;
     /*margin: 0;*/
     /*padding: 40px;*/
     /*overflow: hidden;*/
     /*background-color: #dddddd;*/
 }
 .navList {
-    margin-top: .7%;
+    margin-top: .3%;
     margin-right: 5px;
     float: right;
     padding-left: 10px;
@@ -101,15 +103,16 @@ td {
 }
 .scores {
     font-family: Sans-Serif;
-    font-size: 100px;
+    font-size: 70px;
     text-align: center;
     color: green;
     margin: auto;
     background-color: white;
+    background-repeat: no-repeat;
 }
 
 .loginBox {
-    margin-top: 30px;
+    margin-top: 13px;
     background-color: blue;
 }
 
@@ -161,4 +164,11 @@ td {
     -ms-transform: rotate(12deg); /* IE 9 */
     -webkit-transform: rotate(12deg); /* Chrome, Safari, Opera */
     transform: rotate(12deg);
+}
+span {
+    font-size: 15px;
+    font-weight: bold;
+}
+.balloon-pic {
+    position: relative;
 }
